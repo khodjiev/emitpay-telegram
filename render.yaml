@@ -3,7 +3,7 @@ services:
     name: telegram-finance-bot
     runtime: python
     plan: free
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install --upgrade pip setuptools wheel && pip install -r requirements.txt
     startCommand: python main.py
     healthCheckPath: /
     envVars:
