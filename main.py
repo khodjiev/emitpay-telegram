@@ -3,7 +3,9 @@ import re
 import datetime as dt
 from dotenv import load_dotenv
 import telebot
+from keep_alive import start_server
 from telebot import types
+
 
 from db import init_db, add_record, get_records
 from report import make_report_xlsx, make_text_summary
@@ -13,8 +15,10 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 if not BOT_TOKEN:
     raise RuntimeError("Не найден BOT_TOKEN в окружении. Создай .env и положи туда BOT_TOKEN=...")
 
+start_server()
 bot = telebot.TeleBot(BOT_TOKEN, parse_mode='Markdown')
 init_db()
+
 
 USER_STATE = {}  # user_id -> {'mode': 'income'|'expense', 'await': 'category'|'amount', 'category': str}
 
