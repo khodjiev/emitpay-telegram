@@ -6,7 +6,6 @@ import telebot
 from keep_alive import start_server
 from telebot import types
 
-
 from db import init_db, add_record, get_records
 from report import make_report_xlsx, make_text_summary
 
@@ -18,7 +17,6 @@ if not BOT_TOKEN:
 start_server()
 bot = telebot.TeleBot(BOT_TOKEN, parse_mode='Markdown')
 init_db()
-
 
 USER_STATE = {}  # user_id -> {'mode': 'income'|'expense', 'await': 'category'|'amount', 'category': str}
 
